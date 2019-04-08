@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.somelou.travel.dao.SpendMapper">
+
+    <resultMap type="xyz.somelou.travel.entity.ItemSpend" id="spendResultMap">
+        <id property="id" column="id"/>
+        <result property="spendMatter" column="matter"/>
+        <result property="spend" column="spend"/>
+    </resultMap>
+
+
+    <insert id="addTotalBudget" parameterType="xyz.somelou.travel.entity.TotalBudget">
+        insert into total_spend(budget) values (#{budget});
+    </insert>
+
+    <insert id="addItemSpend" parameterType="xyz.somelou.travel.entity.ItemSpend">
+        insert into item_spend(matter, spend) values (#{spendMatter},#{spend});
+    </insert>
+
+    <select id="getTotalBudget" resultType="xyz.somelou.travel.entity.TotalBudget">
+        select a.budget as budget from total_spend a order by a.id desc limit 0,1;
+    </select>
+
+    <select id="getItemSpendList" resultMap="spendResultMap" parameterType="String">
+        select * from item_spend;
+    </select>
+
+</mapper>
