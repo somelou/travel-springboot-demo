@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xyz.somelou.travel.entity.ItemSpend;
 import xyz.somelou.travel.entity.TotalBudget;
-import xyz.somelou.travel.service.impl.SpendServiceImpl;
+import xyz.somelou.travel.service.SpendService;
 
 import java.util.List;
 import java.util.Map;
@@ -23,7 +23,7 @@ import java.util.Map;
 public class SpendController {
 
     @Autowired
-    private SpendServiceImpl spendService;
+    private SpendService spendService;
 
     @RequestMapping(value = "/add/budget")
     public ModelMap addBudget(@RequestBody Map<String,Object> param){
