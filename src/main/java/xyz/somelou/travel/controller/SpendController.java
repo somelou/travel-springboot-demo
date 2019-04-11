@@ -1,11 +1,13 @@
 package xyz.somelou.travel.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import xyz.somelou.travel.config.NoRepeatSubmit;
 import xyz.somelou.travel.entity.ItemSpend;
 import xyz.somelou.travel.entity.TotalBudget;
 import xyz.somelou.travel.service.SpendService;
@@ -25,6 +27,7 @@ public class SpendController {
     @Autowired
     private SpendService spendService;
 
+    @NoRepeatSubmit
     @RequestMapping(value = "/add/budget")
     public ModelMap addBudget(@RequestBody Map<String,Object> param){
         ModelMap result=new ModelMap();
@@ -35,6 +38,7 @@ public class SpendController {
         return result;
     }
 
+    @NoRepeatSubmit
     @RequestMapping(value = "/add/spend")
     public ModelMap addItemSpend(@RequestBody Map<String,Object> param){
         ModelMap result=new ModelMap();
