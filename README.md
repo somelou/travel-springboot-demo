@@ -171,3 +171,4 @@ public class SpendController {
 1. ~~没有进行重复提交的限制，会因为网络卡顿出现重复提交；~~
 
     使用自定义注解@NoRepeatSubmit+Redis|内存缓存的形式解决了重复提交问题
+    参考：[gzz2017gzz/spring-boot2-example](https://github.com/gzz2017gzz/spring-boot2-example),第53/54
